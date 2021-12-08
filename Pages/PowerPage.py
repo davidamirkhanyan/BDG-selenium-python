@@ -1,9 +1,9 @@
 from Pages.LoginPage import LoginPage
-from Pages.RegisterPage import RegistrationPage
+from Pages.HomePage import HomePage
 from Pages.BasePage import BasePage
 
 
-class PowerPage(LoginPage, RegistrationPage):
+class PowerPage(LoginPage, HomePage):
     def __init__(self, driver):
         BasePage.__init__(self, driver)
         

@@ -21,6 +21,10 @@ class BasePage:
         text = element.text
         return text
     
+    def locate_element_by_selector(self, by_locator):
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator))
+        return 1
+    
     def get_attr_value_from_element(self, by_locator, attr_name):
         element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator))
         value = element.get_attribute(attr_name)

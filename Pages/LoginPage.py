@@ -3,19 +3,14 @@ from Pages.BasePage import BasePage
 
 
 class LoginPage(BasePage):
-    EMAIL_INPUT = (By.ID, "email")
+    LOGIN_PAGE_LOCATOR = (By.CLASS_NAME, "login_logo")
+    USERNAME_INPUT = (By.ID, "user-name")
     PASSWORD_INPUT = (By.ID, "password")
-    LOGIN_BUTTON = (By.NAME, "submit")
-    REGISTER_BUTTON = (By.XPATH, "//a[text()='Register']")
-    NEGATIVE_MESSAGE = (By.XPATH, "//b[text() = 'Enter your Email address and password correct']")
-    POSITIVE_REGISTER_FLAG = (By.ID, 'login-form')
-    POSITIVE_LOGIN_FLAG = (By.XPATH, "//h4[text()='{0}']")
-        
-    def navigate_to_register_page(self):
-        self.do_click(self.REGISTER_BUTTON)
+    LOGIN_BUTTON = (By.ID, "login-button")
     
-    def do_login(self, email, password):
-        self.do_send_keys(self.EMAIL_INPUT, email)
+    def do_login(self, username, password):
+        self.locate_element_by_selector(self.LOGIN_PAGE_LOCATOR)
+        self.do_send_keys(self.USERNAME_INPUT, username)
         self.do_send_keys(self.PASSWORD_INPUT, password)
         self.do_click(self.LOGIN_BUTTON)
         
