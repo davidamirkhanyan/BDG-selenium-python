@@ -37,5 +37,10 @@ class BasePage:
         elements_list = self.driver.find_elements(*by_locator)
         count = len(elements_list)
         return count
+    
+    def return_all_elements_by_tuple_selector(self, by_locator):
+        elements_list = self.driver.find_elements(*by_locator)
+        return elements_list
+        
         
         
