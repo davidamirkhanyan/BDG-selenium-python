@@ -25,6 +25,7 @@ class HomePage(BasePage):
     "//div[text()='{0}']/parent::a/parent::div/following-sibling::div//button")
     ITEM_VALUE_BY_NAME = (By.XPATH,
     "//div[text()='{0}']/parent::a/parent::div/following-sibling::div/div")
+    ITEMS_NAMES = (By.CLASS_NAME, "inventory_item_name")
     
     def menu_navigate_to(self, navigate_to):
         self.do_click(self.BURGER_MENU)
@@ -49,6 +50,7 @@ class HomePage(BasePage):
             self.do_click(self.SORT_LOW_2_HIGH)
         elif type == 'hilo':
             self.do_click(self.SORT_HIGH_2_LOW)
+        time.sleep(2)
             
     def navigate_to_shopping_card(self):
         self.do_click(self.SHOPING_CARD)
@@ -61,4 +63,12 @@ class HomePage(BasePage):
         tuple_selector = (self.ITEM_VALUE_BY_NAME[0], self.ITEM_VALUE_BY_NAME[1].format(item_name))
         text = self.get_text_from_element(tuple_selector)
         return text
+    
+    def get_items_names(self):
+        names = []
+        names_elements_list = self.return_all_elements_by_tuple_selector(self.ITEMS_NAMES)
+        for element in names_elements_list:
+            names.append(element.text)
+        return names
+        
 
