@@ -26,6 +26,7 @@ class HomePage(BasePage):
     ITEM_VALUE_BY_NAME = (By.XPATH,
     "//div[text()='{0}']/parent::a/parent::div/following-sibling::div/div")
     ITEMS_NAMES = (By.CLASS_NAME, "inventory_item_name")
+
     
     def menu_navigate_to(self, navigate_to):
         self.do_click(self.BURGER_MENU)
@@ -70,5 +71,10 @@ class HomePage(BasePage):
         for element in names_elements_list:
             names.append(element.text)
         return names
+
+
+
+
+
         
 
